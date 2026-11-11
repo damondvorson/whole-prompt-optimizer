@@ -1,0 +1,14 @@
+node_modules/
+projects/
+.secrets/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+
+# Local only, never published: real senior-care footage used for manual runs, the senior-care base prompt,
+# and the original engine source (the public tests check against fingerprints recorded from it instead).
+test/fixtures/
+lib/presets/private/
+test/legacy/wpo_video_engine.original.js
