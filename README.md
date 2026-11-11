@@ -81,9 +81,9 @@ At Leafra we put vision-language-model monitoring in senior-living resident room
 **The loop.** The target model was Gemini Flash-Lite at temperature 0, the same inexpensive model class used in production. The optimizer called it up to 300 requests at a time. The generator was Gemini 3.1 Pro (preview) at temperature 1.0 with a 65,536-token output budget, on Vertex AI's Flex tier, which suits one long, latency-tolerant call per step. Candidates competed only on the training split; results were reported on the held-out split.
 
 **Results.**
-- Held-out accuracy rose from 85.6% to 91.1% across 32 detection fields, cutting error by more than a third.
+- Held-out accuracy rose from {redacted} to {redacted} across 32 detection fields, cutting error by more than a third.
 - For our first pilot, I delivered custom detection fields (linen changes and repositioning). I built dedicated optimization and test sets for them and extended the harness to cover them without regressing the existing fields. The pilot converted to a 2-year contract in 2 months.
-- Output schema design mattered as much as prompt wording. A compact output schema cut inference cost 97%. Separately, a reasoning-first schema raised recall by 26 points on the hardest posture field (getting out of bed). Both are options here: the index-array output returns only the indices of detected conditions, and the named output can put a reasoning field ahead of the answers.
+- Output schema design mattered as much as prompt wording. A compact output schema cut inference cost 97%. Separately, a reasoning-first schema raised recall by 26 points on the hardest posture field. Both are options here: the index-array output returns only the indices of detected conditions, and the named output can put a reasoning field ahead of the answers.
 
 **What I changed when rebuilding it.**
 - *Placeholder drift.* In all three of my original runs, the per-clip timing line stopped being injected after the baseline. Candidates rewrote the sentence that the injection rule keyed on, and nothing flagged it. The engine now warns when a candidate drops a template placeholder or a find/replace anchor.
